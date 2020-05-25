@@ -1,0 +1,97 @@
+
+h2, h3, h4, h5, h6 {
+	color: #000;
+}
+
+body,
+html {
+	height: 100%;
+    margin: 0;
+    font: 400 15px/1.8 "Lato", sans-serif;
+    color: #777;
+}
+
+.bg-image {
+	background-image: url("../images/background.jpg");
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    opacity: 0.4;
+}
+
+.caption {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+}
+
+.caption span.border {
+    color: black;
+    font-size: 30px;
+    letter-spacing: 10px;
+    font-weight: bold;
+}
+
+.about {
+    font-size: 17px;
+}
+
+#other-dropdown {
+    padding-top: 8px;
+}
+
+#other-dropdown button:focus {
+    outline: unset;
+}
+
+#other-dropdown > .btn-default {
+    background:transparent;
+    border: none;
+    font-size: 15px;
+    color: #9d9d9d;
+}
+
+* {
+    box-sizing: border-box
+}
+
+.skill {
+  background-color: #ddd;
+  border-radius: inherit;
+}
+
+.skills {
+  text-align: right;
+  color: white;
+}
+
+#skills p {
+    text-align: left;
+}
+
+.js {width: 90%; background-color: #4CAF50;}
+.java {width: 80%; background-color: #2196F3;}
+.python {width: 65%; background-color: #f44336;}
+.database {width: 80%; background-color: #4CAF50;}
+
+.project-card {
+    padding: 15px;
+    text-align: left;
+}
+
+.project-card  span {
+    font-weight: bold;
+}
+
+.qualification i {
+    margin-right: 5px;
+}
+
+.contact i {
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
