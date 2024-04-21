@@ -73,10 +73,14 @@ html {
     text-align: left;
 }
 
-.js {width: 90%; background-color: #4CAF50;}
-.java {width: 80%; background-color: #2196F3;}
-.python {width: 65%; background-color: #f44336;}
-.database {width: 80%; background-color: #4CAF50;}
+.kubernetes {width: 80%; background-color: #228826;}
+.docker {width: 80%; background-color: #0d5fa1;}
+.aws {width: 70%; background-color: #0c304d;}
+.terraform {width: 80%; background-color: #4CAF50;}
+.helm {width: 85%; background-color: #4CAF50;}
+.python {width: 70%; background-color: #2196F3;}
+.observability {width: 75%; background-color: #0a1d2c;}
+.jenkins {width: 80%; background-color: #eb7312;}
 
 .project-card {
     padding: 15px;
