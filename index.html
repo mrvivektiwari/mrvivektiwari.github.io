@@ -1,251 +1,1344 @@
 <!DOCTYPE html>
-<html>
-
-<head lang="en">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Vivek Tiwari</title>
-    <link rel="icon" href="images/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/main.css" />
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivek Tiwari - Cloud Solutions Architect & DevOps Expert</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --primary-blue: #2563eb;
+            --primary-indigo: #4f46e5;
+            --accent-cyan: #06b6d4;
+            --accent-emerald: #059669;
+            --dark-navy: #0f172a;
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-300: #cbd5e1;
+            --slate-200: #e2e8f0;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #059669 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--slate-300);
+            background: var(--dark-navy);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 25% 25%, #2563eb 0%, transparent 70%),
+                radial-gradient(circle at 75% 75%, #4f46e5 0%, transparent 70%),
+                radial-gradient(circle at 75% 25%, #06b6d4 0%, transparent 70%),
+                radial-gradient(circle at 25% 75%, #059669 0%, transparent 70%);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '◉';
+            color: var(--accent-cyan);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--slate-300);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 5rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-title-highlight {
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--slate-300);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--slate-300);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-secondary);
+            color: var(--white);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--slate-300);
+            border: 1px solid var(--slate-600);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+        }
+
+        .tech-orbit {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .orbit-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+            box-shadow: 0 0 40px rgba(37, 99, 235, 0.5);
+        }
+
+        .orbit-ring {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .orbit-ring-1 { width: 200px; height: 200px; animation: rotate 20s linear infinite; }
+        .orbit-ring-2 { width: 300px; height: 300px; animation: rotate 30s linear infinite reverse; }
+        .orbit-ring-3 { width: 400px; height: 400px; animation: rotate 40s linear infinite; }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .tech-item {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: scale(1.1);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 5px 20px rgba(6, 182, 212, 0.3);
+        }
+
+        /* Positioning tech items around orbits */
+        .tech-aws { top: -30px; left: 50%; transform: translateX(-50%); }
+        .tech-k8s { right: -30px; top: 50%; transform: translateY(-50%); }
+        .tech-terraform { bottom: -30px; left: 50%; transform: translateX(-50%); }
+        .tech-docker { left: -30px; top: 50%; transform: translateY(-50%); }
+        .tech-python { top: 30px; right: 30px; }
+        .tech-jenkins { bottom: 30px; right: 30px; }
+        .tech-gcp { bottom: 30px; left: 30px; }
+        .tech-azure { top: 30px; left: 30px; }
+
+        /* Contact Info */
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--slate-300);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--slate-300);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.1);
+        }
+
+        .skill-category h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--gradient-accent);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent-cyan);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(6, 182, 212, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-secondary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 5rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 1.25rem;
+            top: 1.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            border: 3px solid var(--dark-navy);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .timeline-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .job-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-company {
+            color: var(--accent-cyan);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .job-period {
+            color: var(--slate-300);
+            font-size: 0.9rem;
+        }
+
+        .job-achievements {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-achievements li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--slate-300);
+            line-height: 1.6;
+        }
+
+        .job-achievements li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        .job-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--primary-indigo);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(79, 70, 229, 0.2);
+        }
+
+        /* Certifications & Achievements */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .achievement-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.1);
+        }
+
+        .achievement-icon {
+            width: 3rem;
+            height: 3rem;
+            background: var(--gradient-secondary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-description {
+            color: var(--slate-300);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--slate-800);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--slate-300);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline-line {
+                left: 1rem;
+            }
+
+            .timeline-item {
+                padding-left: 3rem;
+            }
+
+            .timeline-dot {
+                left: 0.25rem;
+            }
+
+            .tech-orbit {
+                width: 300px;
+                height: 300px;
+            }
+
+            .orbit-ring-1 { width: 150px; height: 150px; }
+            .orbit-ring-2 { width: 220px; height: 220px; }
+            .orbit-ring-3 { width: 300px; height: 300px; }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
 <body>
-    <header id="header">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div class="active"><a href="#index" class="navbar-brand">Vivek Tiwari</a></div>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li>
-                            <div class="dropdown" id="other-dropdown">
-                                <button class="btn btn-default dropdown-toggle" type="button"
-                                    data-toggle="dropdown">Others
-                                    <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li class="dropdown-header">Blogs</li>
-                                    <li><a href="https://www.blogger.com/profile/01113329841389190266"
-                                            target="_blank">Blogger</a></li>
-                                    <li><a href="https://medium.com/@mrvivektiwari" target="_blank">Medium</a></li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-header">Code Battle</li>
-                                    <li><a href="https://www.hackerearth.com/@vivekcs0114"
-                                            target="_blank">HackerEarth</a></li>
-                                    <li><a href="https://www.hackerrank.com/vivekcs0114" target="_blank">HackerRank</a>
-                                    </li>
-                                    <li><a href="https://leetcode.com/vivekcs0114/" target="_blank">LeetCode</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <div class="bg-pattern"></div>
+
+    <header>
+        <nav>
+            <a href="#" class="logo"></a>
+            <a href="#" class="logo"></a>
+            <a href="#" class="logo"></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
     </header>
-    <div class="bg-image">
-        <div class="caption">
-            <span id="myname" class="border"></span><br>
-            <span class="border">
-                <a href="https://www.youtube.com/channel/UC2oYpNCsMOgyuVLAEfOxrVA?view_as=subscriber" target="_blank"><i
-                        class="fa fa-youtube-play" style="font-size:40px;color:red"></i></a>
-                <a href="https://www.linkedin.com/in/mrvivektiwarii/" target="_blank"><i class="fa fa-linkedin-square"
-                        style="font-size:40px;color:red"></i></a>
-                <a href="https://github.com/mrvivektiwari" target="_blank"><i class="fa fa-github"
-                        style="font-size:40px;color:red"></i></a>
-                <a href="https://www.facebook.com/mr.vivektiwarii" target="_blank"><i class="fa fa-facebook-square"
-                        style="font-size:40px;color:red"></i></a>
-                <a href="https://twitter.com/mrvivektiwarii" target="_blank"><i class="fa fa-twitter-square"
-                        style="font-size:40px;color:red"></i></a>
-            </span>
-        </div>
-    </div>
-    <br/>
-    <section id="about">
-        <div class="container">
-            <h3 class="text-grey padding-16"><i class="fa fa-user fa-fw margin-right xxlarge text-teal"></i>About Me</h3>
-            <br/>
-            <div class="card bg-primary text-white" style="padding: 15px;">
-                <div class="card-body about">
-                    <span>
-                        I like to explore the Information Technology and always keen to learn new skills.
-                        I have 7+ years of experiance in the field of web and mobile application developement and deployment.
-                        Currently working with Standard Chartered as a Cloud Platform Engineer, here I work on
-                        Building and enhancing infrastructure to support banking as a containerised platform.  
-                        Experience in building platforms using Kubernetes, Docker and Cloud native technologies.
-                    </span>
-                </div>
-            </div>
-        </div>
-    </section>
-    <br/>
-    <section id="experience">
-        <div class="container">
-            <h3 class="text-grey padding-16"><i class="fa fa-suitcase fa-fw margin-right xxlarge text-teal"></i>Work Experience</h3>
-            <br>
-            <div>
-                <div class="container card bg-info text-white margin-bottom">
-                  <div class="container">
-                    <h5 class="opacity"><b>Cloud Platform Engineer / Standard Chartered Nexus</b></h5>
-                    <h6 class="text-teal"><i class="fa fa-calendar fa-fw margin-right"></i>July 2021 - <span class="tag teal round">Current</span></h6>
-                    <ul>
-                        <li>Building and enhancing infrastructure to support banking as a containerised platform for Standard Chartered.</li>
-                        <li>Experience in building platforms using Kubernetes, Docker and Cloud native technologies.</li>
-                        <li>Enriched platform with logging, monitoring and alerting and created log visualizations with prometheus and grafana.</li>
-                    </ul>
-                    <div class="col-md-12 col-sm-12">
-                        <b>Description</b><br />
-                        We are a white-label plug and play Banking-as-a-Service (BaaS) solution powered by Standard Chartered with a vision to redefine the banking experience for customers globally by digitally marrying ecosystems to banks.
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content slide-in-left">
+                <h1>
+                    Hi, I'm <span class="hero-title-highlight">Vivek Tiwari</span>
+                </h1>
+                <p class="hero-subtitle">Cloud Solutions Architect & DevOps Expert</p>
+                <p class="hero-description">
+                    AWS-certified Cloud Engineer with 8+ years of experience designing, deploying, and managing 
+                    scalable cloud infrastructure across AWS, GCP, and Azure. Specialist in Kubernetes, 
+                    Terraform, CI/CD automation, and site reliability engineering.
+                </p>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Years Experience</span>
                     </div>
-                    <hr>
-                  </div>
-                  <div class="container">
-                    <h5 class="opacity"><b>Full Stack Developer / Mach-X Private Limited</b></h5>
-                    <h6 class="text-teal"><i class="fa fa-calendar fa-fw margin-right"></i>April 2019 - June 2021</h6>
-                    <ul>
-                        <li>Worked as full stack developer and created Rest APIs and UI for financial research dashboard for Mach-X platform.</li>
-                        <li>Designed customized template to display financial insights</li>
-                        <li>Made applications fully CI/CD compliant using Git workflows.</li>
-                    </ul>
-                    <div class="col-md-12 col-sm-12">
-                        <b>Description</b><br />
-                        Mach-X is an intelligent research platform whose mission is to provide investors with real-time, affordable and independent research on an extensive universe of publicly listed companies.
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Projects Delivered</span>
                     </div>
-                    <hr>
-                  </div>
-                  <div class="container">
-                    <h5 class="opacity"><b>Junior Software Engineer / Synerzip Softech</b></h5>
-                    <h6 class="text-teal"><i class="fa fa-calendar fa-fw margin-right"></i>April 2017 - April 2019</h6>
-                    <ul>
-                        <li>Design and develop feature enhancement for leading company in hospitality domain.</li>
-                        <li>Re-factored codebase and improved process.</li>
-                        <li>Develop and execute unit, functional, integration testing of developed software components.</li>
-                    </ul>
-                    <div class="col-md-12 col-sm-12">
-                        <b>Description</b><br/>
-                        Our solutions help businesses streamline operations and focus on what really matters — the guest. Bring peace of mind to your organization and let customers know they come first. Discover how.
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Cloud Platforms</span>
                     </div>
-                    <hr>
-                  </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#experience" class="btn-primary">
+                        View My Work →
+                    </a>
+                    <a href="#contact" class="btn-secondary">
+                        Get In Touch
+                    </a>
+                </div>
+
+                <div class="contact-info">
+                    <a href="mailto:vivekcs0114@gmail.com" class="contact-item">
+                        📧 vivekcs0114@gmail.com
+                    </a>
+                    <a href="https://www.linkedin.com/in/mrvivektiwarii/" class="contact-item" target="_blank">
+                        🔗 LinkedIn Profile
+                    </a>
                 </div>
             </div>
-            <br/>
-        </div>
-    </section>
-    <br/>
-    <section id="skills">
-        <div class="container">
-            <h3 class="text-grey padding-16"><i class="fa fa-cogs fa-fw margin-right xxlarge text-teal"></i>Skills</h3>
-            <br/>
-            <p>Kubernetes</p>
-            <div class="skill">
-                <div class="skills kubernetes">&nbsp</div>
-            </div><br/>
 
-            <p>Docker</p>
-            <div class="skill">
-                <div class="skills docker">&nbsp</div>
-            </div><br/>
-
-            <p>AWS Services</p>
-            <div class="skill">
-                <div class="skills aws">&nbsp</div>
-            </div><br/>
-
-            <p>Terraform</p>
-            <div class="skill">
-                <div class="skills terraform">&nbsp</div>
-            </div><br/>
-
-            <p>Helm/Helmfile</p>
-            <div class="skill">
-                <div class="skills helm">&nbsp</div>
-            </div><br/>
-
-            <p>Python/Shell Script</p>
-            <div class="skill">
-                <div class="skills python">&nbsp</div>
-            </div><br/>
-
-            <p>Observability</p>
-            <div class="skill">
-                <div class="skills observability">&nbsp</div>
-            </div><br/>
-            
-            <p>Jenkins</p>
-            <div class="skill">
-                <div class="skills jenkins">&nbsp</div>
-            </div><br/>
-        </div>
-    </section>
-    <br/>
-    <section id="education">
-        <div class="container">
-            <h3 class="text-grey padding-16"><i class="fa fa-graduation-cap fa-fw margin-right xxlarge text-teal"></i>Qualification</h3>
-            <br/>
-            <div class="card bg-info text-white project-card">
-                <div class="card-body qualification">
-                    <h4>United Institute Of Technology, Allahabad</h4>
-                    <h6><i class="fa fa-calendar"></i>2012 - 2016</h6>
-                    <h5>Bachelor Degree in Computer Science & Engineering</h5>
-                    <br/>
-                    <h4>Vibhuti Narayan Govt. Inter College Gyanpur, Bhadohi</h4>
-                    <h6><i class="fa fa-calendar"></i>2009 - 2011</h6>
-                    <h5>Senior Secondary</h5>
-                    <br/>
-                    <h4>Anant Narayan Singh Vidyalaya Gyanpur, Bhadohi</h4>
-                    <h6><i class="fa fa-calendar"></i>2008 - 2009</h6>
-                    <h5>Junior Secondary</h5>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
-    <br/>
-    <section id="contact">
-        <div class="container">
-            <h3 class="text-grey padding-16"><i class="fa fa-address-book fa-fw margin-right xxlarge text-teal"></i>Contact</h3>
-            <br/>
-            <div class="card bg-success text-white" style="padding: 15px;">
-                <div class="card-body contact">
-                    <h4><i class="fa fa-envelope"></i> <span>vivekcs0114@gmail.com</span></h4>
-                    <h4><i class="fa fa-phone"></i><span>(+91) 9112363432</span></h4>
-                    <h4><i class="fa fa-home"></i><span>Bangalore, Karnataka India</span></h4>
+            <div class="hero-visual slide-in-right">
+                <div class="tech-orbit">
+                    <div class="orbit-ring orbit-ring-1"></div>
+                    <div class="orbit-ring orbit-ring-2"></div>
+                    <div class="orbit-ring orbit-ring-3"></div>
+                    
+                    <div class="orbit-center">☁️</div>
+                    
+                    <div class="tech-item tech-aws">🚀</div>
+                    <div class="tech-item tech-k8s">⚙️</div>
+                    <div class="tech-item tech-terraform">🏗️</div>
+                    <div class="tech-item tech-docker">🐳</div>
+                    <div class="tech-item tech-python">🐍</div>
+                    <div class="tech-item tech-jenkins">🔧</div>
+                    <div class="tech-item tech-gcp">☁️</div>
+                    <div class="tech-item tech-azure">⚡</div>
                 </div>
             </div>
         </div>
     </section>
-    <br/>
-    <footer style="text-align: center;background: aliceblue;height: 5%;">
-        <p style="padding-top: 5px;">© Copyright 2024</p>
+
+    <section id="skills" class="section">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">
+                    Comprehensive cloud and DevOps skills developed through years of hands-on experience 
+                    with enterprise-grade infrastructure and modern development practices.
+                </p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>
+                        <span class="skill-icon">☁️</span>
+                        Cloud Platforms
+                    </h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">AWS (EC2, S3, RDS, Lambda, EKS)</span>
+                        <span class="skill-tag">Google Cloud Platform</span>
+                        <span class="skill-tag">Microsoft Azure</span>
+                        <span class="skill-tag">Multi-Cloud Architecture</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>
+                        <span class="skill-icon">🏗️</span>
+                        Infrastructure as Code
+                    </h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">CloudFormation</span>
+                        <span class="skill-tag">Crossplane</span>
+                        <span class="skill-tag">ARM Templates</span>
+                        <span class="skill-tag">Bicep</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>
+                        <span class="skill-icon">🐳</span>
+                        Containerization & Orchestration
+                    </h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes (EKS/GKE/AKS)</span>
+                        <span class="skill-tag">Helm</span>
+                        <span class="skill-tag">Istio Service Mesh</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>
+                        <span class="skill-icon">🔄</span>
+                        CI/CD & Automation
+                    </h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">GitLab CI/CD</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">ArgoCD</span>
+                        <span class="skill-tag">Azure DevOps</span>
+                        <span class="skill-tag">Harness</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>
+                        <span class="skill-icon">📊</span>
+                        Monitoring & Observability
+                    </h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Prometheus</span>
+                        <span class="skill-tag">Grafana</span>
+                        <span class="skill-tag">Dynatrace</span>
+                        <span class="skill-tag">ELK Stack</span>
+                        <span class="skill-tag">Splunk</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>
+                        <span class="skill-icon">💻</span>
+                        Programming & Scripting
+                    </h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">PowerShell</span>
+                        <span class="skill-tag">Groovy</span>
+                        <span class="skill-tag">Go</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Professional Journey</h2>
+                <p class="section-subtitle">
+                    A progression through leading organizations, consistently delivering scalable cloud solutions 
+                    and driving digital transformation initiatives.
+                </p>
+            </div>
+
+            <div class="experience-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="job-header">
+                            <h3 class="job-title">Cloud Platform & DevOps Engineer</h3>
+                            <p class="job-company">Standard Chartered Bank, India</p>
+                            <p class="job-period">July 2021 - Present</p>
+                        </div>
+                        
+                        <ul class="job-achievements">
+                            <li>Designed and maintained scalable AWS and GCP cloud solutions ensuring 99.9% high availability and optimal performance for banking operations</li>
+                            <li>Built and optimized CI/CD pipelines using GitLab CI/CD, Jenkins, ArgoCD, and GitHub Actions, reducing deployment time by 40%</li>
+                            <li>Managed Kubernetes (EKS) clusters with Helm charts, Istio service mesh, and automated scaling strategies serving millions of transactions</li>
+                            <li>Implemented comprehensive monitoring and alerting solutions using Prometheus, Grafana, Dynatrace, and ELK Stack</li>
+                            <li>Led incident response, post-mortem analysis, and disaster recovery planning to maintain critical service continuity</li>
+                            <li>Automated infrastructure provisioning using Terraform and Ansible, reducing manual intervention by 40%</li>
+                            <li>Participated in Google Arcade program, strengthening GCP skills and earning multiple cloud badges</li>
+                        </ul>
+                        
+                        <div class="job-tech">
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">GCP</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">Terraform</span>
+                            <span class="tech-tag">GitLab CI/CD</span>
+                            <span class="tech-tag">Prometheus</span>
+                            <span class="tech-tag">Grafana</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="job-header">
+                            <h3 class="job-title">Full Stack Developer</h3>
+                            <p class="job-company">Mach-X Private Limited, Singapore</p>
+                            <p class="job-period">April 2019 - June 2021</p>
+                        </div>
+                        
+                        <ul class="job-achievements">
+                            <li>Developed REST APIs and UI components for a comprehensive financial research platform</li>
+                            <li>Delivered cloud-native solutions across AWS, GCP, and Azure using Terraform, CloudFormation, and Kubernetes</li>
+                            <li>Automated infrastructure provisioning, scaling, and updates using CI/CD pipelines and scripting (Python, Bash, PowerShell)</li>
+                            <li>Optimized costs across multi-cloud environments through intelligent monitoring, tagging, and resource right-sizing</li>
+                            <li>Led initiatives to integrate internal developer portals (Backstage, Port) and GitOps workflows across development teams</li>
+                            <li>Implemented robust security controls and compliance measures across cloud and containerized environments</li>
+                        </ul>
+                        
+                        <div class="job-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Azure</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">GitOps</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="job-header">
+                            <h3 class="job-title">Junior Software Engineer</h3>
+                            <p class="job-company">Synerzip Softech, Pune</p>
+                            <p class="job-period">April 2017 - April 2019</p>
+                        </div>
+                        
+                        <ul class="job-achievements">
+                            <li>Designed and developed feature enhancements for leading hospitality clients, delivering scalable and maintainable solutions</li>
+                            <li>Built and automated CI/CD pipelines using GitLab CI/CD, integrating Docker for containerized deployments</li>
+                            <li>Developed and executed comprehensive unit, functional, and integration tests ensuring high-quality deliverables</li>
+                            <li>Implemented container-based workflows, enabling faster and more reliable application deployment processes</li>
+                            <li>Collaborated on modern frontend development using JavaScript (React) and TypeScript, aligning with cloud-native architectures</li>
+                        </ul>
+                        
+                        <div class="job-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">GitLab CI/CD</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="section">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Achievements & Certifications</h2>
+                <p class="section-subtitle">
+                    Recognition of expertise through professional certifications and successful project deliveries 
+                    that have driven significant business impact.
+                </p>
+            </div>
+
+            <div class="achievements-grid">
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">🏆</div>
+                    <h3 class="achievement-title">AWS Certified Solutions Architect</h3>
+                    <p class="achievement-description">
+                        AWS Certified Solutions Architect - Associate, validating expertise in designing and 
+                        deploying scalable, highly available, and fault-tolerant systems on AWS.
+                    </p>
+                </div>
+
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">⚙️</div>
+                    <h3 class="achievement-title">Certified Kubernetes Administrator</h3>
+                    <p class="achievement-description">
+                        Currently pursuing CKA certification to validate hands-on skills in Kubernetes 
+                        administration, cluster management, and troubleshooting.
+                    </p>
+                </div>
+
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">🎓</div>
+                    <h3 class="achievement-title">Google Cloud Arcade Program</h3>
+                    <p class="achievement-description">
+                        Completed hands-on Google Cloud labs and earned multiple cloud badges, strengthening 
+                        GCP proficiency across compute, storage, and networking services.
+                    </p>
+                </div>
+
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">🚀</div>
+                    <h3 class="achievement-title">Enterprise Cloud Migration</h3>
+                    <p class="achievement-description">
+                        Successfully migrated enterprise applications to AWS (EC2, S3, RDS, IAM, VPC) with 
+                        automated provisioning via Terraform and CloudFormation.
+                    </p>
+                </div>
+
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">📈</div>
+                    <h3 class="achievement-title">Performance Optimization</h3>
+                    <p class="achievement-description">
+                        Reduced deployment time by 40% and manual intervention by 40% through intelligent 
+                        automation and infrastructure optimization strategies.
+                    </p>
+                </div>
+
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">🔒</div>
+                    <h3 class="achievement-title">Security & Compliance</h3>
+                    <p class="achievement-description">
+                        Implemented security best practices and compliance checks using IAM policies, 
+                        security groups, and AWS Config across multi-cloud environments.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Key Project Highlights</h2>
+                <p class="section-subtitle">
+                    Strategic initiatives that demonstrate technical leadership and business impact 
+                    across cloud infrastructure and DevOps transformation.
+                </p>
+            </div>
+
+            <div class="achievements-grid">
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">🏗️</div>
+                    <h3 class="achievement-title">Multi-Cloud Infrastructure Design</h3>
+                    <p class="achievement-description">
+                        Architected and deployed scalable cloud solutions across AWS, GCP, and Azure, 
+                        ensuring high availability, disaster recovery, and cost optimization.
+                    </p>
+                </div>
+
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">🔄</div>
+                    <h3 class="achievement-title">GitOps Workflow Implementation</h3>
+                    <p class="achievement-description">
+                        Managed EKS clusters and implemented Helm and ArgoCD for GitOps, ensuring 
+                        scalable, reliable deployments with automated rollback capabilities.
+                    </p>
+                </div>
+
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">📊</div>
+                    <h3 class="achievement-title">Observability Platform</h3>
+                    <p class="achievement-description">
+                        Built comprehensive monitoring solutions with Prometheus and Grafana, providing 
+                        real-time insights and proactive alerting for critical business services.
+                    </p>
+                </div>
+
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">💰</div>
+                    <h3 class="achievement-title">Cost Optimization Initiative</h3>
+                    <p class="achievement-description">
+                        Led cost optimization across cloud environments through monitoring, intelligent 
+                        tagging, resource right-sizing, and automated scaling strategies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="section-header">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">
+                    Ready to discuss cloud architecture, DevOps transformation, or your next big project? 
+                    I'm always excited to collaborate on innovative solutions.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="mailto:vivekcs0114@gmail.com">📧 Email</a>
+                <a href="https://www.linkedin.com/in/mrvivektiwarii/" target="_blank">🔗 LinkedIn</a>
+                <a href="https://mrvivektiwari.github.io/" target="_blank">💼 Portfolio</a>
+            </div>
+
+            <p style="color: var(--slate-300); margin-top: 2rem;">
+                © 2025 Vivek Tiwari. Cloud Solutions Architect & DevOps Expert based in Bengaluru, India.
+            </p>
+        </div>
     </footer>
+
     <script>
-        var i = 0;
-        var txt = 'Hi, I\'m Vivek';
-        var speed = 200;
-        function typeWriter() {
-            if (i < txt.length) {
-                document.getElementById("myname").innerHTML += txt.charAt(i);
-                i++;
-                setTimeout(typeWriter, speed);
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 23, 42, 0.95)';
+            } else {
+                header.style.background = 'rgba(15, 23, 42, 0.9)';
             }
-        }
-        typeWriter();
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animation elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Stats counter animation
+        const animateStats = () => {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const targets = ['8', '50', '3'];
+            
+            statNumbers.forEach((stat, index) => {
+                let current = 0;
+                const target = parseInt(targets[index]);
+                const increment = target / 100;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        stat.textContent = Math.ceil(current) + (targets[index].includes('+') ? '+' : '');
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        stat.textContent = targets[index] + '+';
+                    }
+                };
+                
+                // Start animation when element is visible
+                const statsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => updateCounter(), index * 200);
+                            statsObserver.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                statsObserver.observe(stat.closest('.stat-item'));
+            });
+        };
+
+        // Initialize stats animation
+        animateStats();
+
+        // Hover effects for cards
+        document.querySelectorAll('.skill-category, .achievement-card, .timeline-content').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = this.style.transform.includes('translateY') 
+                    ? this.style.transform.replace(/translateY\([^)]*\)/, 'translateY(-15px)')
+                    : 'translateY(-15px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = this.style.transform.replace(/translateY\([^)]*\)/, 'translateY(-10px)');
+            });
+        });
+
+        // Tech orbit interactions
+        document.querySelectorAll('.tech-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform += ' scale(1.2)';
+                this.style.zIndex = '10';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = this.style.transform.replace(' scale(1.2)', '');
+                this.style.zIndex = '1';
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroVisual = document.querySelector('.hero-visual');
+            const orbits = document.querySelectorAll('.orbit-ring');
+            
+            if (heroVisual) {
+                heroVisual.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
+            
+            orbits.forEach((orbit, index) => {
+                const speed = (index + 1) * 0.05;
+                orbit.style.transform += ` translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Mobile menu toggle (for future enhancement)
+        const createMobileMenu = () => {
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (window.innerWidth <= 768) {
+                const hamburger = document.createElement('button');
+                hamburger.className = 'mobile-menu-toggle';
+                hamburger.innerHTML = '☰';
+                hamburger.style.cssText = `
+                    background: none;
+                    border: none;
+                    color: var(--white);
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                `;
+                
+                hamburger.addEventListener('click', () => {
+                    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                });
+                
+                nav.appendChild(hamburger);
+            }
+        };
+
+        // Initialize mobile menu on resize
+        window.addEventListener('resize', createMobileMenu);
+        createMobileMenu();
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Skill tags hover effects
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.05)';
+                this.style.boxShadow = '0 5px 15px rgba(6, 182, 212, 0.3)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-2px) scale(1)';
+                this.style.boxShadow = 'none';
+            });
+        });
     </script>
 </body>
-
 </html>
